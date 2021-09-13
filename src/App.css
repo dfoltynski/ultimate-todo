@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap");
 
@@ -76,4 +76,123 @@ a {
   top: 0;
   left: 0;
   margin: 0.25em;
+}
+
+li {
+  list-style: none;
+}
+
+.todo {
+  height: 75%;
+  width: 80%;
+}
+
+.todo__control {
+  display: flex;
+  justify-content: space-between;
+}
+
+.control--search {
+  width: 35%;
+}
+
+.todo__list {
+  overflow-y: auto;
+  height: 100%;
+  padding: 0;
+  margin: 2em 0;
+}
+
+.list__element {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  margin: 0.5em 0;
+  padding: 0.25em 0.5em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
+.list__element:hover {
+  background-color: #222222;
+  transition: 0.1s ease-in-out;
+}
+
+.element--title {
+  font-weight: 700;
+}
+
+.element--date {
+  font-weight: 300;
+}
+
+.element--remainings {
+  font-weight: 300;
+}
+
+.todo__logout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.5em;
+  font-size: 36px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #ff9900;
+}
+
+.todo__add {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1em;
+  border-radius: 100px;
+  padding: 0.4em;
+  border: none;
+  outline: none;
+  transition: transform 0.8s ease-in-out;
+  cursor: pointer;
+  width: 54px;
+  height: 54px;
+}
+
+.add__icon {
+  font-size: 24px;
+  padding: 0.4em;
+}
+
+.todo__add:hover {
+  transform: rotate(360deg);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  margin: 0.25em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 100px;
+  background: #888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media screen and (max-width: 780px) {
+  .list__element {
+    font-size: 13px;
+  }
 }
