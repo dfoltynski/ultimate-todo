@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
 
 export default function RegisterForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -9,13 +10,23 @@ export default function RegisterForm() {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
+      <Link to="/">
+        <BsArrowLeft className="arrow" />
+      </Link>
       <h1 className="form__header">Create an new account</h1>
       <input
         type="text"
-        name="login"
-        id="login"
-        className="form__input form__input--login"
-        placeholder="Email or Username"
+        name="user"
+        id="user"
+        className="form__input"
+        placeholder="Username"
+      />
+      <input
+        type="text"
+        name="email"
+        id="email"
+        className="form__input"
+        placeholder="Email"
       />
       <input
         type="password"
@@ -24,8 +35,14 @@ export default function RegisterForm() {
         className="form__input form__input--password"
         placeholder="Password"
       />
-      <input type="submit" value="Login" className="form__button--submit" />
-      <p className="text--white">or</p>
+      <input
+        type="password"
+        name="password2"
+        id="password2"
+        className="form__input form__input--password"
+        placeholder="Repeat password"
+      />
+      <input type="submit" value="Create" className="form__button--submit" />
     </form>
   );
 }

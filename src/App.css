@@ -68,3 +68,12 @@ a {
   text-decoration: none;
   color: #ff9900;
 }
+
+.arrow {
+  color: #ffffff;
+  font-size: 36px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.25em;
+}
