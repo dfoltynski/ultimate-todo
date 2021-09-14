@@ -18,28 +18,28 @@ export default function RegisterForm() {
         type="text"
         name="user"
         id="user"
-        className="form__input"
+        className="input form__input"
         placeholder="Username"
       />
       <input
         type="text"
         name="email"
         id="email"
-        className="form__input"
+        className="input form__input"
         placeholder="Email"
       />
       <input
         type="password"
         name="password"
         id="password"
-        className="form__input form__input--password"
+        className="input form__input form__input--password"
         placeholder="Password"
       />
       <input
         type="password"
         name="password2"
         id="password2"
-        className="form__input form__input--password"
+        className="input form__input form__input--password"
         placeholder="Repeat password"
       />
       <input type="submit" value="Create" className="form__button--submit" />

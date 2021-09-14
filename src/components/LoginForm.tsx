@@ -14,14 +14,14 @@ export default function LoginForm() {
         type="text"
         name="login"
         id="login"
-        className="form__input form__input--login"
+        className="input form__input--login"
         placeholder="Email or Username"
       />
       <input
         type="password"
         name="password"
         id="password"
-        className="form__input form__input--password"
+        className="input form__input--password"
         placeholder="Password"
       />
       <input type="submit" value="Login" className="form__button--submit" />

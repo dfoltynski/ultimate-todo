@@ -40,12 +40,15 @@
   position: relative;
 }
 
-.form__input {
-  padding: 0.5em;
+.input {
+  padding: 0.7em;
   width: 80%;
   border-radius: 8px;
   border: none;
   margin: 0.5em;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  outline: none;
 }
 
 .form__button--submit {
@@ -96,6 +99,10 @@ li {
   width: 35%;
 }
 
+.control--sort {
+  width: auto;
+}
+
 .todo__list {
   overflow-y: auto;
   height: 100%;
@@ -108,7 +115,7 @@ li {
   justify-content: space-between;
   background-color: #2d2d2d;
   color: #ffffff;
-  margin: 0.5em 0;
+  margin: 0.8em 0;
   padding: 0.25em 0.5em;
   border-radius: 8px;
   cursor: pointer;
@@ -168,6 +175,206 @@ li {
   transform: rotate(360deg);
 }
 
+.blend {
+  background: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(25px);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 1;
+}
+
+.addtodo {
+  display: flex;
+  position: absolute;
+  background-color: #2d2d2d;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 40em;
+
+  height: 85%;
+  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 1em 2em;
+  box-sizing: border-box;
+}
+
+.addtodo__input {
+  width: 100%;
+  font-size: 14px;
+}
+
+.addtodo__separation {
+  background-color: #ff9900;
+  height: 2px;
+  width: 100%;
+  margin: 0.5em 0;
+}
+
+.addtodo__tasklist {
+  align-self: flex-start;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.tasklist__task {
+  display: flex;
+  margin-top: 1em;
+  position: relative;
+}
+
+.task__input--text {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ff9900;
+  outline: none;
+  width: 100%;
+  padding-left: 0.5em;
+  color: #ffffff;
+
+  font-size: 15px;
+  padding: 0.3em;
+}
+
+.task__control {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.task__input--check {
+  align-self: center;
+}
+
+.task__button {
+  margin: 1em;
+
+  outline: none;
+  border: none;
+  color: #ffffff;
+  padding: 0.5em;
+  width: 5em;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.task__button:hover {
+  filter: brightness(0.7);
+}
+
+.task__button--cancel {
+  background-color: #ff3d00;
+}
+
+.task__button--add {
+  background-color: #ff9900;
+}
+
+.addtodo__control {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+}
+
+.addtodo__button--save {
+  background-color: #ff9900;
+  color: #ffffff;
+  font-size: 17px;
+}
+
+.addtodo__button--cancel {
+  background-color: transparent;
+  color: #ff9900;
+  font-size: 17px;
+}
+
+.closed {
+  transition: 0.2s ease-in-out;
+  display: none;
+}
+
+.visible {
+  transition: 0.2s ease-in-out;
+
+  display: auto;
+}
+
+/* CHECKBOX */
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 17px;
+  width: 17px;
+  background-color: transparent;
+  border: 2px #000000 solid;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #1f1f1f;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  border-color: #00ff0a;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 10px;
+  top: -8px;
+  width: 5px;
+  height: 18px;
+  border: solid #00ff0a;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* SCROLLBAR */
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
