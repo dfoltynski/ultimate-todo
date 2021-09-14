@@ -24,7 +24,11 @@ export default function LoginForm() {
         className="input form__input--password"
         placeholder="Password"
       />
-      <input type="submit" value="Login" className="form__button--submit" />
+      <input
+        type="submit"
+        value="Login"
+        className="form__button form__button--submit"
+      />
       <p className="text--white">or</p>
       <Link to="/register">
         <h2 className="form__button--register">create an account</h2>

@@ -51,14 +51,17 @@
   outline: none;
 }
 
-.form__button--submit {
+.form__button {
   cursor: pointer;
   font-size: 18px;
   font-weight: 500;
   border: none;
   border-radius: 8px;
-  color: #ffffff;
   padding: 0.5em 2em;
+}
+
+.form__button--submit {
+  color: #ffffff;
   background-color: #ff9900;
   margin: 1em;
 }
@@ -95,22 +98,22 @@ li {
   justify-content: space-between;
 }
 
-.control--search {
+.todo__input--search {
   width: 35%;
 }
 
-.control--sort {
+.todo__input--sort {
   width: auto;
 }
 
-.todo__list {
+.todo__container {
   overflow-y: auto;
   height: 100%;
   padding: 0;
   margin: 2em 0;
 }
 
-.list__element {
+.todo__list {
   display: flex;
   justify-content: space-between;
   background-color: #2d2d2d;
@@ -122,20 +125,20 @@ li {
   transition: 0.1s ease-in-out;
 }
 
-.list__element:hover {
+.todo__list:hover {
   background-color: #222222;
   transition: 0.1s ease-in-out;
 }
 
-.element--title {
+.todo--title {
   font-weight: 700;
 }
 
-.element--date {
+.todo--date {
   font-weight: 300;
 }
 
-.element--remainings {
+.todo--remainings {
   font-weight: 300;
 }
 
@@ -184,7 +187,7 @@ li {
   z-index: 1;
 }
 
-.addtodo {
+.todo-list {
   display: flex;
   position: absolute;
   background-color: #2d2d2d;
@@ -203,25 +206,26 @@ li {
   box-sizing: border-box;
 }
 
-.addtodo__input {
+.todo-list__input {
   width: 100%;
   font-size: 14px;
 }
 
-.addtodo__separation {
+.todo-list__separation {
   background-color: #ff9900;
   height: 2px;
   width: 100%;
   margin: 0.5em 0;
 }
 
-.addtodo__tasklist {
+.todo-list__task-list {
   align-self: flex-start;
   width: 100%;
   overflow-y: auto;
+  height: 80%;
 }
 
-.tasklist__task {
+.task-list__task {
   display: flex;
   margin-top: 1em;
   position: relative;
@@ -249,31 +253,29 @@ li {
   align-self: center;
 }
 
-.task__button {
-  margin: 1em;
-
-  outline: none;
-  border: none;
-  color: #ffffff;
-  padding: 0.5em;
-  width: 5em;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
-}
-
 .task__button:hover {
   filter: brightness(0.7);
 }
 
 .task__button--cancel {
   background-color: #ff3d00;
+  width: 5em;
+  color: #ffffff;
+  margin: 1em;
+  font-size: 14px;
+  padding: 0.5em;
 }
 
 .task__button--add {
   background-color: #ff9900;
+  width: 5em;
+  color: #ffffff;
+  margin: 1em;
+  font-size: 14px;
+  padding: 0.5em;
 }
 
-.addtodo__control {
+.todo-list__control {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -281,16 +283,19 @@ li {
   bottom: 0;
 }
 
-.addtodo__button--save {
+.todo-list__button--save {
   background-color: #ff9900;
   color: #ffffff;
   font-size: 17px;
+  margin: 1em;
 }
 
-.addtodo__button--cancel {
+.todo-list__button--cancel {
   background-color: transparent;
   color: #ff9900;
   font-size: 17px;
+
+  margin: 1em;
 }
 
 .closed {
@@ -399,7 +404,7 @@ li {
 }
 
 @media screen and (max-width: 780px) {
-  .list__element {
+  .todo__list {
     font-size: 13px;
   }
 }

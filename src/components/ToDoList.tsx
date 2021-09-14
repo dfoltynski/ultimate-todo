@@ -1,73 +1,95 @@
-import React, { useState } from "react";
-import { IoLogOut } from "react-icons/io5";
-import AddToDoList from "./AddToDoList";
+import React, { useState, useRef } from "react";
+import "../App.css";
+import Checkbox from "./Checkbox";
 
 export default function ToDoList() {
-  const [toggleAddToDoList, setToggleAddToDoList] = useState<number>(0);
+  const [taskAmount, setTaskAmount] = useState<number>(1);
 
-  const handleToDoAdd = () => {
-    document.querySelector(".blend")?.classList.add("visible");
-    document.querySelector(".blend")?.classList.remove("closed");
-    document.querySelector(".addtodo")?.classList.remove("closed");
+  const handleAddTask = () => {
+    //  User can add new task without entering name to previous, because I find it more comfortable
+    setTaskAmount(taskAmount + 1);
+  };
+  const handleCancelTask = () => {
+    if (taskAmount > 1) {
+      setTaskAmount(taskAmount - 1);
+    }
   };
 
+  const closeAddToDo = () => {
+    document.querySelector(".blend")?.classList.add("closed");
+    ToDo.current?.classList.add("closed");
+  };
+
+  const handleSaveTaskList = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // make API call to create new or put changed task list
+    closeAddToDo();
+  };
+
+  const handleCancelTaskList = () => {
+    closeAddToDo();
+  };
+
+  const taskList = useRef<HTMLDivElement>(null);
+  const taskControls = useRef<HTMLDivElement>(null);
+  const ToDo = useRef<HTMLFormElement>(null);
+
   return (
-    <>
-      <AddToDoList />
-      <div className="blend"></div>
+    <form className="todo-list" ref={ToDo} onSubmit={handleSaveTaskList}>
+      <input
+        type="text"
+        name="listname"
+        id="listname"
+        className="input todo-list__input"
+        placeholder="List name"
+      />
 
-      <div className="todo">
-        <button className="todo__logout">
-          <IoLogOut />
-        </button>
-        <div className="todo__control">
-          <input
-            type="text"
-            name="search"
-            id="search"
-            className="input control--search"
-            placeholder="Search"
-          />
-          <input
-            type="text"
-            name="sort"
-            id="sort"
-            placeholder="sort"
-            className="input control--sort"
-          />
-        </div>
-        <ul className="todo__list">
-          {[...Array(15)].map(() => (
-            <li className="list__element">
-              <p className="element--title">ToDo List Name</p>
-              <p className="element--date">Created at: 18-03-2021</p>
-              <p className="element--remainings">
-                Complated: 15 Uncomplated: 10 All: 25
-              </p>
-            </li>
-          ))}
-        </ul>
+      <div className="todo-list__separation"></div>
 
-        <button className="todo__add" onClick={handleToDoAdd}>
-          <svg
-            stroke="currentColor"
-            fill="currentColor"
-            stroke-width="0"
-            viewBox="0 0 24 24"
-            className="add__icon"
-            height="1em"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
+      <div className="todo-list__task-list" ref={taskList}>
+        {[...Array(taskAmount)].map((value, i) => (
+          <div className="task-list__task" key={i}>
+            <Checkbox />
+            <input
+              type="text"
+              name="taskname"
+              id="taskname"
+              className="task__input--text"
+              placeholder="Task name"
+            />
+          </div>
+        ))}
+        <div className="task__control" ref={taskControls}>
+          <button
+            className="form__button task__button--cancel"
+            onClick={handleCancelTask}
+            type="button"
           >
-            <path
-              fill="none"
-              stroke="#ff9900"
-              stroke-width="2"
-              d="M12,22 L12,2 M2,12 L22,12"
-            ></path>
-          </svg>
-        </button>
+            CANCEL
+          </button>
+          <button
+            className="form__button task__button--add"
+            onClick={handleAddTask}
+            type="button"
+          >
+            ADD
+          </button>
+        </div>
       </div>
-    </>
+      <div className="todo-list__control">
+        <button
+          className="form__button todo-list__button--cancel"
+          onClick={handleCancelTaskList}
+        >
+          CANCEL
+        </button>
+        <input
+          className="form__button todo-list__button--save"
+          type="submit"
+          value="SAVE"
+        />
+      </div>
+    </form>
   );
 }

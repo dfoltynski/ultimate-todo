@@ -37,12 +37,16 @@ export default function RegisterForm() {
       />
       <input
         type="password"
-        name="password2"
-        id="password2"
+        name="repeated-password"
+        id="repeated-password"
         className="input form__input form__input--password"
         placeholder="Repeat password"
       />
-      <input type="submit" value="Create" className="form__button--submit" />
+      <input
+        type="submit"
+        value="Create"
+        className="form__button form__button--submit"
+      />
     </form>
   );
 }
